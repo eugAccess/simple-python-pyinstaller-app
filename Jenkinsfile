@@ -34,6 +34,7 @@ pipeline {
 
       }
       steps {
+        sh 'whoami'
         sh 'python3 -m venv /tmp'
         sh 'pip install pyinstaller'
         sh 'pyinstaller --onefile sources/add2vals.py'
