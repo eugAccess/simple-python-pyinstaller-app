@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'minidocks/pyinstaller:latest'
+      image 'safesecurity/pytest:latest'
     }
 
   }
@@ -26,6 +26,12 @@ pipeline {
     }
 
     stage('Deliver') {
+      agent {
+        docker {
+          image 'minidocks/pyinstaller:latest'
+        }
+
+      }
       post {
         success {
           archiveArtifacts 'dist/add2vals'
