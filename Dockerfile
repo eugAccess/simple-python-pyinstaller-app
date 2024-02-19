@@ -6,3 +6,5 @@ RUN python3 -m venv /opt/venv
 # This ensures that the virtual environment is activated for all subsequent RUN commands in the Dockerfile.
 ENV PATH="/opt/venv/bin:$PATH"
 RUN pip install pyinstaller
+# Add the PATH environment variable to /etc/environment so that it is available to all users and processes.
+RUN echo "PATH=${PATH}" >> /etc/environment
