@@ -1,5 +1,5 @@
 FROM safesecurity/pytest:latest AS builder
-RUN apt-get update && apt-get install -y --no-install-recommends binutils
+RUN apk update && apk install -y --no-install-recommends binutils
 
 # Create a Python virtual environment in /opt/venv.
 RUN python3 -m venv /opt/venv
