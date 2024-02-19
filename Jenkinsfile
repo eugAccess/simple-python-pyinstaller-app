@@ -1,7 +1,7 @@
 pipeline {
   agent {
-    docker {
-      image 'safesecurity/pytest:latest'
+    dockerfile {
+      filename 'Dockerfile'
     }
 
   }
@@ -26,7 +26,6 @@ pipeline {
     }
 
     stage('Deliver') {
-      
       post {
         success {
           archiveArtifacts 'dist/add2vals'
