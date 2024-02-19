@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'safesecurity/pytest:latest'
+      image 'six8/pyinstaller-alpine:latest'
     }
 
   }
