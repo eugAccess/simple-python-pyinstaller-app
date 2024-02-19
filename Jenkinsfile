@@ -34,7 +34,7 @@ pipeline {
 
       }
       steps {
-        sh 'python3 -m venv /opt'
+        sh 'python3 -m venv'
         sh 'pip install pyinstaller'
         sh 'pyinstaller --onefile sources/add2vals.py'
       }
