@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'fenago/pytest-pycharm:latest'
+      image 'safesecurity/pytest:latest'
     }
 
   }
@@ -26,15 +26,16 @@ pipeline {
     }
 
     stage('Deliver') {
-      steps {
-        sh 'pyinstaller --onefile sources/add2vals.py'
-      }
-
       post {
         success {
           archiveArtifacts 'dist/add2vals'
         }
+
+      }
+      steps {
+        sh 'pyinstaller --onefile sources/add2vals.py'
       }
     }
+
   }
 }
