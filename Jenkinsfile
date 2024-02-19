@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'python:3.13.0a4-alpine3.19'
+      image 'fenago/pytest-pycharm:latest'
     }
 
   }
@@ -12,16 +12,16 @@ pipeline {
         stash(name: 'compiled-results', includes: 'sources/*.py*')
       }
     }
-    
-    stage('Test') {
-      steps {
-        sh 'py.test --junit-xml test-reports/results.xml sources/test_calc.py'
-      }
 
+    stage('Test') {
       post {
         always {
           junit 'test-reports/results.xml'
         }
+
+      }
+      steps {
+        sh 'py.test --junit-xml test-reports/results.xml sources/test_calc.py'
       }
     }
 
